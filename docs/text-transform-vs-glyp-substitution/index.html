@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Text Transform vs. Glyph Substitution</title>
+
+	<style>
+		@font-face {
+			font-family: 'MartianMono';
+			src: url('./MartianMono-Regular-.ttf') format('truetype');
+			font-weight: normal;
+			font-style: normal;
+		}
+
+		@font-face {
+			font-family: 'MartianMono GSUB';
+			src: url('./MartianMono-Regular-with-substitutions.ttf') format('truetype');
+			font-weight: normal;
+			font-style: normal;
+		}
+
+		* {
+			font-family: 'MartianMono', monospace;
+		}
+
+		.wrapper {
+			box-sizing: border-box;
+			margin: 0 auto;
+			max-width: 900px;
+			padding: 1.5rem 16px;
+		}
+
+		table {
+			border-collapse: collapse;
+		}
+
+		thead tr {
+			border-bottom: 1px solid grey;
+		}
+
+		th, td {
+			padding: 0.5rem 16px;
+		}
+
+		td + td {
+			text-align: right;
+			border-left: 1px solid grey;
+		}
+
+		#text-transform__source {
+			text-transform: uppercase;
+		}
+
+		#gsub__source,
+		#gsub__source * {
+			font-family: 'MartianMono GSUB';
+		}
+
+		#text-transform__with_label__source {
+			text-transform: uppercase;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<table>
+			<thead>
+				<tr>
+					<th>Test</th>
+					<th>Source</th>
+					<th>Markup</th>
+					<th>Appears as</th>
+					<th>Spoken as</th>
+					<th>Copy/paste as</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>no alterations</td>
+					<td><span>add</span></td>
+					<td><code>add</code></td>
+					<td>add</td>
+					<td>add</td>
+					<td>add</td>
+				</tr>
+				<tr>
+					<td>uppercase source</td>
+					<td><span>ADD</span></td>
+					<td><code>ADD</code></td>
+					<td>ADD</td>
+					<td>ADD</td>
+					<td>ADD</td>
+				</tr>
+				<tr>
+					<td>text-transform</td>
+					<td><span id="text-transform__source"><a href="#">add</a></span></td>
+					<td><code>add</code></td>
+					<td>ADD</td>
+					<td>add / A.D.D.</td>
+					<td>ADD</td>
+				</tr>
+				<tr>
+					<td>ligature</td>
+					<td><span id="gsub__source"><a href="#">add</a></span></td>
+					<td><code>add</code></td>
+					<td>ADD</td>
+					<td>add</td>
+					<td>add</td>
+				</tr>
+		</table>
+
+	</div>
+</body>
+</html>
